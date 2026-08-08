@@ -332,6 +332,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const packsArrowLeft = document.getElementById('packs-arrow-left');
   const packsArrowRight = document.getElementById('packs-arrow-right');
 
+  function updateArrowVisibility() {
+    if (!packsGridEl || !packsArrowLeft || !packsArrowRight) return;
+    if (window.innerWidth > 768) return;
+
+    const scrollLeft = packsGridEl.scrollLeft;
+    const maxScroll = packsGridEl.scrollWidth - packsGridEl.clientWidth;
+
+    // Hide left arrow if at start (scrollLeft <= 15px)
+    if (scrollLeft <= 15) {
+      packsArrowLeft.style.opacity = '0';
+      packsArrowLeft.style.pointerEvents = 'none';
+    } else {
+      packsArrowLeft.style.opacity = '1';
+      packsArrowLeft.style.pointerEvents = 'auto';
+    }
+
+    // Hide right arrow if at end (scrollLeft >= maxScroll - 15px)
+    if (scrollLeft >= maxScroll - 15) {
+      packsArrowRight.style.opacity = '0';
+      packsArrowRight.style.pointerEvents = 'none';
+    } else {
+      packsArrowRight.style.opacity = '1';
+      packsArrowRight.style.pointerEvents = 'auto';
+    }
+  }
+
   function centerPopularPack() {
     if (window.innerWidth <= 768 && packsGridEl) {
       setTimeout(() => {
@@ -340,11 +366,15 @@ document.addEventListener('DOMContentLoaded', () => {
           const scrollPos = popularCard.offsetLeft - (packsGridEl.offsetWidth - popularCard.offsetWidth) / 2;
           packsGridEl.scrollTo({ left: scrollPos, behavior: 'smooth' });
         }
+        updateArrowVisibility();
       }, 60);
     }
   }
 
   if (packsArrowLeft && packsArrowRight && packsGridEl) {
+    packsGridEl.addEventListener('scroll', updateArrowVisibility, { passive: true });
+    window.addEventListener('resize', updateArrowVisibility);
+
     packsArrowLeft.addEventListener('click', () => {
       const card = packsGridEl.querySelector('.pack-card');
       const step = card ? (card.offsetWidth + 16) : 280;
@@ -375,6 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isDragging) return;
       const deltaX = e.clientX - startX;
       packsGridEl.scrollLeft = scrollStart - deltaX;
+      updateArrowVisibility();
     });
 
     const stopDragging = () => {
@@ -382,6 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isDragging = false;
       packsGridEl.style.scrollSnapType = 'x mandatory';
       packsGridEl.style.scrollBehavior = 'smooth';
+      updateArrowVisibility();
     };
 
     window.addEventListener('pointerup', stopDragging);

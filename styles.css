@@ -699,7 +699,26 @@ h4,
   margin-bottom: 10px;
 }
 
-.dark-card p {
+/* Doubts Helper Card */
+.doubts-helper-card {
+  background: var(--bg-dark-card);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.doubts-helper-card h3 {
+  font-size: 1.4rem;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.doubts-helper-card p {
   color: var(--text-light-muted);
   font-size: 0.9rem;
   line-height: 1.6;
@@ -1874,10 +1893,10 @@ select.form-control {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 25;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 35 !important;
     width: 44px;
     height: 44px;
     padding: 0 !important;
@@ -1885,10 +1904,10 @@ select.form-control {
     border-radius: 50%;
     background: #FFFFFF;
     color: var(--red-primary, #ff2937);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.12);
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+    transition: opacity 0.25s ease, transform 0.2s ease, background-color 0.2s ease;
     user-select: none;
   }
 
@@ -1911,11 +1930,45 @@ select.form-control {
   }
 
   .packs-arrow-left {
-    left: -2px;
+    left: 8px !important;
   }
 
   .packs-arrow-right {
-    right: -2px;
+    right: 8px !important;
+  }
+
+  /* Doubts Helper Card Mobile Re-alignment */
+  .doubts-helper-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 28px 20px !important;
+    gap: 20px !important;
+    margin-top: 24px !important;
+  }
+
+  .doubts-helper-card > div {
+    width: 100% !important;
+  }
+
+  .doubts-helper-card h3 {
+    text-align: center !important;
+    font-size: 1.35rem !important;
+    margin-bottom: 14px !important;
+  }
+
+  .doubts-helper-card p {
+    text-align: left !important;
+    width: 100% !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    color: var(--text-light-muted) !important;
+  }
+
+  .doubts-helper-card .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
   }
 
   .packs-grid {
@@ -1926,7 +1979,7 @@ select.form-control {
     -webkit-overflow-scrolling: touch !important;
     touch-action: pan-x pan-y !important;
     scroll-behavior: smooth !important;
-    padding: 16px 36px 24px 36px !important;
+    padding: 16px 20px 24px 20px !important;
     gap: 16px !important;
     margin-bottom: 20px !important;
     scrollbar-width: none;
@@ -1937,12 +1990,17 @@ select.form-control {
   }
 
   .pack-card {
-    flex: 0 0 82% !important;
-    width: 82% !important;
-    max-width: 320px !important;
+    flex: 0 0 calc(100% - 32px) !important;
+    width: calc(100% - 32px) !important;
+    max-width: 100% !important;
     scroll-snap-align: center !important;
     scroll-snap-stop: always !important;
     margin: 0 !important;
+  }
+
+  /* Hide description under price on mobile to free up vertical space */
+  .pack-desc {
+    display: none !important;
   }
 
   .timeline-sticky-left,
