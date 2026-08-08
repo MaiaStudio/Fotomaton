@@ -808,8 +808,10 @@
       // 0. Stickers in Hero Section (placed left + right)
       const heroSection = document.getElementById('hero');
       if (heroSection) {
-        const placeStickers = () => {
-          // Read DOM layout properties first before making updates (prevents forced reflow)
+        let leftSticker = null;
+        let rightSticker = null;
+
+        const updateStickers = () => {
           const w = heroSection.offsetWidth;
           const h = heroSection.offsetHeight;
           const isMobile = w <= 768;
@@ -823,40 +825,43 @@
             descBottom = Math.round(rect.bottom - heroRect.top + 10);
           }
 
-          // Mutate DOM (remove previous wrappers)
-          heroSection.querySelectorAll('.sticker-peel-wrapper').forEach(el => el.remove());
-
           const leftX = isMobile ? Math.floor(w / 2) - stickerW - 8 : 30;
           const rightX = isMobile ? Math.floor(w / 2) + 8 : w - 210;
           const leftY = isMobile ? descBottom : Math.floor(h / 2) - 120;
           const rightY = isMobile ? descBottom : Math.floor(h / 2) - 100;
 
-          // Left sticker (Bigode)
-          createStickerPeel(heroSection, {
-            imageSrc: 'assets/stickers/bigode.webp',
-            width: stickerW,
-            peelBackHoverPct: 22,
-            peelBackActivePct: 42,
-            initialX: leftX,
-            initialY: leftY,
-            rotate: -10
-          });
+          if (!leftSticker || !rightSticker) {
+            // Left sticker (Bigode)
+            leftSticker = createStickerPeel(heroSection, {
+              imageSrc: 'assets/stickers/bigode.webp',
+              width: stickerW,
+              peelBackHoverPct: 22,
+              peelBackActivePct: 42,
+              initialX: leftX,
+              initialY: leftY,
+              rotate: -10
+            });
 
-          // Right sticker (Óculos)
-          createStickerPeel(heroSection, {
-            imageSrc: 'assets/stickers/oculos.webp',
-            width: stickerW,
-            peelBackHoverPct: 22,
-            peelBackActivePct: 42,
-            initialX: rightX,
-            initialY: rightY,
-            rotate: 12
-          });
+            // Right sticker (Óculos)
+            rightSticker = createStickerPeel(heroSection, {
+              imageSrc: 'assets/stickers/oculos.webp',
+              width: stickerW,
+              peelBackHoverPct: 22,
+              peelBackActivePct: 42,
+              initialX: rightX,
+              initialY: rightY,
+              rotate: 12
+            });
+          } else {
+            leftSticker.style.left = `${leftX}px`;
+            leftSticker.style.top = `${leftY}px`;
+            rightSticker.style.left = `${rightX}px`;
+            rightSticker.style.top = `${rightY}px`;
+          }
         };
 
-        placeStickers();
-        window.addEventListener('load', placeStickers);
-        window.addEventListener('resize', placeStickers);
+        updateStickers();
+        window.addEventListener('resize', updateStickers);
       }
 
       // Check if non-touch desktop device for heavy 3D effects
