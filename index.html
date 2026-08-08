@@ -84,8 +84,7 @@
 
   <!-- 2. HERO SECTION (Curved Bottom Arch + Central Red Arch matching ilustração.png) -->
   <section id="hero" class="hero-wrapper" style="position: relative; overflow: visible;">
-    <!-- Desktop Background Video (Loaded conditionally via JS for screens > 768px) -->
-    <video id="hero-bg-video" class="hero-bg-video" muted playsinline preload="none"></video>
+    <!-- Desktop Background Video is injected dynamically via JS for screens > 768px -->
 
     <!-- Sticker Left -->
     <div id="hero-sticker-left" class="hero-sticker-anchor"
@@ -749,11 +748,20 @@
     import { createDriftWall } from './drift-wall.js';
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Conditionally load hero video on desktop devices only
-      const heroVideo = document.getElementById('hero-bg-video');
-      if (heroVideo && window.innerWidth > 768) {
-        heroVideo.src = 'assets/video hero.mp4';
-        heroVideo.play().catch(() => {});
+      // Dynamically create and inject hero video on desktop devices (> 768px)
+      if (window.innerWidth > 768) {
+        const heroEl = document.getElementById('hero');
+        if (heroEl && !document.getElementById('hero-bg-video')) {
+          const v = document.createElement('video');
+          v.id = 'hero-bg-video';
+          v.className = 'hero-bg-video';
+          v.muted = true;
+          v.playsInline = true;
+          v.autoplay = true;
+          v.loop = true;
+          v.src = 'assets/video hero.mp4';
+          heroEl.prepend(v);
+        }
       }
 
       // 00. DriftWall (React Bits Component) in Section Eventos
