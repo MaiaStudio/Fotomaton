@@ -17,10 +17,16 @@
   <meta property="og:title" content="Fotomatones en Madrid para Bodas">
   <meta property="og:description"
     content="Fotomatones para bodas en Madrid. La foto se imprime en segundos. El recuerdo dura años. Packs desde 249 €.">
-  <meta property="og:image" content="assets/imagens/hero_photobooth.png">
+  <meta property="og:image" content="assets/imagens/hero_photobooth.webp">
   <meta property="og:type" content="website">
 
-  <!-- CSS & Fonts -->
+  <!-- Resource Preconnects -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+
+  <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="styles.css?v=1.3">
   <link rel="stylesheet" href="sticker-peel.css">
   <link rel="stylesheet" href="drift-wall.css">
@@ -35,12 +41,12 @@
     }
   }
   </script>
-  <!-- GSAP & ScrollTrigger -->
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <!-- GSAP & ScrollTrigger (Deferred) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
-  <!-- Lenis Smooth Scroll -->
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Lenis Smooth Scroll (Deferred) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 </head>
 
 <body>
@@ -78,10 +84,8 @@
 
   <!-- 2. HERO SECTION (Curved Bottom Arch + Central Red Arch matching ilustração.png) -->
   <section id="hero" class="hero-wrapper" style="position: relative; overflow: visible;">
-    <!-- Desktop Background Video -->
-    <video id="hero-bg-video" class="hero-bg-video" muted playsinline autoplay>
-      <source src="assets/video hero.mp4" type="video/mp4">
-    </video>
+    <!-- Desktop Background Video (Loaded conditionally via JS for screens > 768px) -->
+    <video id="hero-bg-video" class="hero-bg-video" muted playsinline preload="none"></video>
 
     <!-- Sticker Left -->
     <div id="hero-sticker-left" class="hero-sticker-anchor"
@@ -145,7 +149,7 @@
         <!-- Fotomatón Clásico -->
         <div class="booth-card">
           <div class="booth-card-media">
-            <img src="assets/imagens/clásico.png" alt="Fotomatón Clásico">
+            <img src="assets/imagens/clasico.webp" alt="Fotomatón Clásico" loading="lazy" decoding="async">
           </div>
           <h3>Fotomatón Clásico</h3>
 
@@ -179,7 +183,7 @@
         <!-- Fotomatón Espejo -->
         <div class="booth-card">
           <div class="booth-card-media">
-            <img src="assets/imagens/espejo.png" alt="Fotomatón Espejo Magic Mirror">
+            <img src="assets/imagens/espejo.webp" alt="Fotomatón Espejo Magic Mirror" loading="lazy" decoding="async">
           </div>
           <h3>Fotomatón Espejo</h3>
 
@@ -249,7 +253,7 @@
       <div class="dark-feature-cards">
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/infinito.png" alt="Fotos ilimitadas" class="feature-card-img">
+            <img src="assets/imagens/infinito.webp" alt="Fotos ilimitadas" class="feature-card-img" loading="lazy" decoding="async">
           </div>
           <h3>Fotos ilimitadas</h3>
           <p>Tus invitados pueden repetir todas las veces que quieran durante el horario contratado.</p>
@@ -257,7 +261,7 @@
 
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/custom.webp" alt="Diseño personalizado" class="feature-card-img">
+            <img src="assets/imagens/custom.webp" alt="Diseño personalizado" class="feature-card-img" loading="lazy" decoding="async">
           </div>
           <h3>Diseño personalizado</h3>
           <p>Adaptamos las fotografías con nombres, fecha, colores, frases o identidad de marca.</p>
@@ -265,7 +269,7 @@
 
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/suporte.png" alt="Asistencia durante el evento" class="feature-card-img">
+            <img src="assets/imagens/suporte.webp" alt="Asistencia durante el evento" class="feature-card-img" loading="lazy" decoding="async">
           </div>
           <h3>Asistencia durante el evento</h3>
           <p>Nuestro equipo supervisa el funcionamiento y ayuda a tus invitados durante la experiencia.</p>
@@ -435,7 +439,7 @@
         </div>
 
         <div class="testimonial-avatar-shape">
-          <img src="assets/imagens/boda_photobooth.png" alt="Testimonio Fotomatón Party Madrid">
+          <img src="assets/imagens/boda_photobooth.webp" alt="Testimonio Fotomatón Party Madrid" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -734,8 +738,8 @@
     </div>
   </div>
 
-  <!-- Script -->
-  <script src="script.js"></script>
+  <!-- Script (Deferred) -->
+  <script defer src="script.js"></script>
 
   <!-- Initialize Ghost Cursor & MoltenMetal Background Effects -->
   <script type="module">
@@ -745,6 +749,13 @@
     import { createDriftWall } from './drift-wall.js';
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Conditionally load hero video on desktop devices only
+      const heroVideo = document.getElementById('hero-bg-video');
+      if (heroVideo && window.innerWidth > 768) {
+        heroVideo.src = 'assets/video hero.mp4';
+        heroVideo.play().catch(() => {});
+      }
+
       // 00. DriftWall (React Bits Component) in Section Eventos
       const wallContainer = document.getElementById('drift-wall-container');
       if (wallContainer) {
@@ -759,9 +770,9 @@
           { image: 'assets/eventos/images (5).jpg', title: 'Fotomatón Espejo' },
           { image: 'assets/eventos/images (6).jpg', title: 'Fotomatón Clásico' },
           { image: 'assets/eventos/images.jpg', title: 'Boda Madrid' },
-          { image: 'assets/imagens/boda_photobooth.png', title: 'Boda Elegante' },
-          { image: 'assets/imagens/clásico.png', title: 'Modelo Clásico' },
-          { image: 'assets/imagens/espejo.png', title: 'Modelo Espejo' }
+          { image: 'assets/imagens/boda_photobooth.webp', title: 'Boda Elegante' },
+          { image: 'assets/imagens/clasico.webp', title: 'Modelo Clásico' },
+          { image: 'assets/imagens/espejo.webp', title: 'Modelo Espejo' }
         ];
 
         createDriftWall(wallContainer, {
@@ -785,19 +796,17 @@
           roll: 2
         });
       }
+
       // 0. Stickers in Hero Section (placed left + right)
       const heroSection = document.getElementById('hero');
       if (heroSection) {
         const placeStickers = () => {
-          // Remove existing sticker wrappers if re-placing
-          heroSection.querySelectorAll('.sticker-peel-wrapper').forEach(el => el.remove());
-
+          // Read DOM layout properties first before making updates (prevents forced reflow)
           const w = heroSection.offsetWidth;
           const h = heroSection.offsetHeight;
           const isMobile = w <= 768;
           const stickerW = isMobile ? 85 : 180;
 
-          // Calculate Y coordinate below paragraph text on mobile using getBoundingClientRect
           const descEl = heroSection.querySelector('.hero-description');
           let descBottom = Math.floor(h * 0.42);
           if (descEl) {
@@ -806,6 +815,9 @@
             descBottom = Math.round(rect.bottom - heroRect.top + 10);
           }
 
+          // Mutate DOM (remove previous wrappers)
+          heroSection.querySelectorAll('.sticker-peel-wrapper').forEach(el => el.remove());
+
           const leftX = isMobile ? Math.floor(w / 2) - stickerW - 8 : 30;
           const rightX = isMobile ? Math.floor(w / 2) + 8 : w - 210;
           const leftY = isMobile ? descBottom : Math.floor(h / 2) - 120;
@@ -813,7 +825,7 @@
 
           // Left sticker (Bigode)
           createStickerPeel(heroSection, {
-            imageSrc: 'assets/stickers/bigode.png',
+            imageSrc: 'assets/stickers/bigode.webp',
             width: stickerW,
             peelBackHoverPct: 22,
             peelBackActivePct: 42,
@@ -824,7 +836,7 @@
 
           // Right sticker (Óculos)
           createStickerPeel(heroSection, {
-            imageSrc: 'assets/stickers/oculos.png',
+            imageSrc: 'assets/stickers/oculos.webp',
             width: stickerW,
             peelBackHoverPct: 22,
             peelBackActivePct: 42,
@@ -834,57 +846,61 @@
           });
         };
 
-        // Run placeStickers immediately and after load/resize
         placeStickers();
         window.addEventListener('load', placeStickers);
         window.addEventListener('resize', placeStickers);
       }
 
-      // 1. Ghost Cursor on Dark Rounded Sections
-      const darkSectionIds = ['experiencia', 'eventos', 'faq'];
-      darkSectionIds.forEach(id => {
-        const target = document.getElementById(id);
-        if (target) {
-          createGhostCursor(target, {
-            color: '#FF2A38',
-            brightness: 1.2,
-            edgeIntensity: 0,
-            trailLength: 50,
-            inertia: 0.5,
+      // Check if non-touch desktop device for heavy 3D effects
+      const isDesktop = window.innerWidth > 768 && !('ontouchstart' in window);
+
+      if (isDesktop) {
+        // 1. Ghost Cursor on Dark Rounded Sections
+        const darkSectionIds = ['experiencia', 'eventos', 'faq'];
+        darkSectionIds.forEach(id => {
+          const target = document.getElementById(id);
+          if (target) {
+            createGhostCursor(target, {
+              color: '#FF2A38',
+              brightness: 1.2,
+              edgeIntensity: 0,
+              trailLength: 50,
+              inertia: 0.5,
+              grainIntensity: 0.05,
+              bloomStrength: 0.12,
+              bloomRadius: 1.0,
+              bloomThreshold: 0.025,
+              mixBlendMode: 'screen',
+              zIndex: 0
+            });
+          }
+        });
+
+        // 2. MoltenMetal Background Effect on Footer
+        const footerElement = document.querySelector('footer.footer');
+        if (footerElement) {
+          createMoltenMetal(footerElement, {
+            color1: '#000000',
+            color2: '#ff2937',
+            color3: '#FFFFFF',
+            speed: 0.35,
+            scale: 4,
+            detail: 3,
+            glow: 1.6,
+            coreSize: 0.1,
+            swirl: 1,
+            fold: -0.2,
+            blackPoint: 0.05,
+            brightness: 1.3,
+            colorMode: 'molten',
+            grain: true,
             grainIntensity: 0.05,
-            bloomStrength: 0.12,
-            bloomRadius: 1.0,
-            bloomThreshold: 0.025,
-            mixBlendMode: 'screen',
+            mouseInteraction: true,
+            mouseStrength: 0.3,
+            opacity: 1.0,
             zIndex: 0
           });
         }
-      });
-
-      // 2. MoltenMetal Background Effect on Footer (z-index 0: behind all footer content)
-      const footerElement = document.querySelector('footer.footer');
-      if (footerElement) {
-        createMoltenMetal(footerElement, {
-          color1: '#000000',
-          color2: '#ff2937',
-          color3: '#FFFFFF',
-          speed: 0.35,
-          scale: 4,
-          detail: 3,
-          glow: 1.6,
-          coreSize: 0.1,
-          swirl: 1,
-          fold: -0.2,
-          blackPoint: 0.05,
-          brightness: 1.3,
-          colorMode: 'molten',
-          grain: true,
-          grainIntensity: 0.05,
-          mouseInteraction: true,
-          mouseStrength: 0.3,
-          opacity: 1.0,
-          zIndex: 0
-        });
       }
     });
   </script>
