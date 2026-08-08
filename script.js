@@ -581,9 +581,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(sec => sectionObserver.observe(sec));
 
-  // 8. BlurText Headline Animation (React Bits Component Integration)
+  // 8. BlurText Headline Animation (React Bits Component Integration - Excludes .hero-title)
   function initBlurText() {
-    const headlines = document.querySelectorAll('.hero-title, .section-title, .cta-title, h1, h2');
+    const headlines = document.querySelectorAll('.section-title, .cta-title, h1:not(.hero-title), h2');
 
     headlines.forEach(headline => {
       if (headline.classList.contains('blur-text-init')) return;
