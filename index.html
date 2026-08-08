@@ -21,13 +21,19 @@
   <meta property="og:type" content="website">
 
   <!-- Resource Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <link rel="dns-prefetch" href="https://unpkg.com">
 
+  <!-- Google Fonts (loaded early, non-blocking via display=swap) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"></noscript>
+
   <!-- CSS Stylesheets -->
-  <link rel="stylesheet" href="styles.css?v=1.3">
+  <link rel="stylesheet" href="styles.min.css">
   <link rel="preload" href="drift-wall.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="drift-wall.css"></noscript>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -142,7 +148,7 @@
         <!-- Fotomatón Clásico -->
         <div class="booth-card">
           <div class="booth-card-media">
-            <img src="assets/imagens/clasico.webp" alt="Fotomatón Clásico" loading="lazy" decoding="async">
+            <img src="assets/imagens/clasico.webp" alt="Fotomatón Clásico" width="600" height="400" loading="lazy" decoding="async">
           </div>
           <h3>Fotomatón Clásico</h3>
 
@@ -176,7 +182,7 @@
         <!-- Fotomatón Espejo -->
         <div class="booth-card">
           <div class="booth-card-media">
-            <img src="assets/imagens/espejo.webp" alt="Fotomatón Espejo Magic Mirror" loading="lazy" decoding="async">
+            <img src="assets/imagens/espejo.webp" alt="Fotomatón Espejo Magic Mirror" width="600" height="400" loading="lazy" decoding="async">
           </div>
           <h3>Fotomatón Espejo</h3>
 
@@ -246,7 +252,7 @@
       <div class="dark-feature-cards">
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/infinito.webp" alt="Fotos ilimitadas" class="feature-card-img" loading="lazy" decoding="async">
+            <img src="assets/imagens/infinito.webp" alt="Fotos ilimitadas" class="feature-card-img" width="500" height="400" loading="lazy" decoding="async">
           </div>
           <h3>Fotos ilimitadas</h3>
           <p>Tus invitados pueden repetir todas las veces que quieran durante el horario contratado.</p>
@@ -254,7 +260,7 @@
 
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/custom.webp" alt="Diseño personalizado" class="feature-card-img" loading="lazy" decoding="async">
+            <img src="assets/imagens/custom.webp" alt="Diseño personalizado" class="feature-card-img" width="500" height="400" loading="lazy" decoding="async">
           </div>
           <h3>Diseño personalizado</h3>
           <p>Adaptamos las fotografías con nombres, fecha, colores, frases o identidad de marca.</p>
@@ -262,7 +268,7 @@
 
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/suporte.webp" alt="Asistencia durante el evento" class="feature-card-img" loading="lazy" decoding="async">
+            <img src="assets/imagens/suporte.webp" alt="Asistencia durante el evento" class="feature-card-img" width="500" height="400" loading="lazy" decoding="async">
           </div>
           <h3>Asistencia durante el evento</h3>
           <p>Nuestro equipo supervisa el funcionamiento y ayuda a tus invitados durante la experiencia.</p>
@@ -432,7 +438,7 @@
         </div>
 
         <div class="testimonial-avatar-shape">
-          <img src="assets/imagens/boda_photobooth.webp" alt="Testimonio Fotomatón Party Madrid" loading="lazy" decoding="async">
+          <img src="assets/imagens/boda_photobooth.webp" alt="Testimonio Fotomatón Party Madrid" width="600" height="400" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
