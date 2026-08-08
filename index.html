@@ -28,7 +28,6 @@
 
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="styles.css?v=1.3">
-  <link rel="stylesheet" href="sticker-peel.css">
   <link rel="preload" href="drift-wall.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="drift-wall.css"></noscript>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -87,13 +86,6 @@
   <!-- 2. HERO SECTION (Curved Bottom Arch + Central Red Arch matching ilustração.png) -->
   <section id="hero" class="hero-wrapper" style="position: relative; overflow: visible;">
     <!-- Desktop Background Video is injected dynamically via JS for screens > 768px -->
-
-    <!-- Sticker Left -->
-    <div id="hero-sticker-left" class="hero-sticker-anchor"
-      style="position: absolute; left: 40px; top: 50%; transform: translateY(-50%); z-index: 20;"></div>
-    <!-- Sticker Right -->
-    <div id="hero-sticker-right" class="hero-sticker-anchor"
-      style="position: absolute; right: 40px; top: 50%; transform: translateY(-50%); z-index: 20;"></div>
 
     <div class="container">
 
@@ -744,7 +736,6 @@
 
   <!-- Initialize Ghost Cursor & MoltenMetal Background Effects -->
   <script type="module">
-    import { createStickerPeel } from './sticker-peel.js';
     import { createDriftWall } from './drift-wall.js';
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -803,65 +794,6 @@
           radius: 5,
           roll: 2
         });
-      }
-
-      // 0. Stickers in Hero Section (placed left + right)
-      const heroSection = document.getElementById('hero');
-      if (heroSection) {
-        let leftSticker = null;
-        let rightSticker = null;
-
-        const updateStickers = () => {
-          const w = heroSection.offsetWidth;
-          const h = heroSection.offsetHeight;
-          const isMobile = w <= 768;
-          const stickerW = isMobile ? 85 : 180;
-
-          const descEl = heroSection.querySelector('.hero-description');
-          let descBottom = Math.floor(h * 0.42);
-          if (descEl) {
-            const rect = descEl.getBoundingClientRect();
-            const heroRect = heroSection.getBoundingClientRect();
-            descBottom = Math.round(rect.bottom - heroRect.top + 10);
-          }
-
-          const leftX = isMobile ? Math.floor(w / 2) - stickerW - 8 : 30;
-          const rightX = isMobile ? Math.floor(w / 2) + 8 : w - 210;
-          const leftY = isMobile ? descBottom : Math.floor(h / 2) - 120;
-          const rightY = isMobile ? descBottom : Math.floor(h / 2) - 100;
-
-          if (!leftSticker || !rightSticker) {
-            // Left sticker (Bigode)
-            leftSticker = createStickerPeel(heroSection, {
-              imageSrc: 'assets/stickers/bigode.webp',
-              width: stickerW,
-              peelBackHoverPct: 22,
-              peelBackActivePct: 42,
-              initialX: leftX,
-              initialY: leftY,
-              rotate: -10
-            });
-
-            // Right sticker (Óculos)
-            rightSticker = createStickerPeel(heroSection, {
-              imageSrc: 'assets/stickers/oculos.webp',
-              width: stickerW,
-              peelBackHoverPct: 22,
-              peelBackActivePct: 42,
-              initialX: rightX,
-              initialY: rightY,
-              rotate: 12
-            });
-          } else {
-            leftSticker.style.left = `${leftX}px`;
-            leftSticker.style.top = `${leftY}px`;
-            rightSticker.style.left = `${rightX}px`;
-            rightSticker.style.top = `${rightY}px`;
-          }
-        };
-
-        updateStickers();
-        window.addEventListener('resize', updateStickers);
       }
 
       // Check if non-touch desktop device for heavy 3D effects

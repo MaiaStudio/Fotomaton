@@ -496,19 +496,7 @@ h4,
     align-self: center;
   }
 
-  /* Desktop: Stickers stay hidden until hero video finishes playing */
-  .hero-wrapper .sticker-peel-wrapper {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
 
-  .hero-wrapper.video-ended .sticker-peel-wrapper {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
 }
 
 /* Giant Red Arch Container in Hero */
@@ -2109,12 +2097,7 @@ select.form-control {
     object-position: center top !important;
   }
 
-  .sticker-peel-wrapper {
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: block !important;
-    z-index: 25 !important;
-  }
+
 
   .hero-title {
     font-size: clamp(2.3rem, 7.5vw, 3.4rem);
@@ -2386,7 +2369,6 @@ html.lenis body {
 
 .hero-title,
 .hero-description,
-.hero-sticker-anchor,
 .hero-cards-flex {
   will-change: transform, opacity;
 }

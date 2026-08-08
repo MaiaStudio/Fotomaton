@@ -53,16 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0);
       }
 
-      // Layer 2 (Medium Fast): Stickers move upward with rotation shift
-      const stickers = heroEl.querySelectorAll('.sticker-peel-container, .hero-sticker-anchor');
-      if (stickers.length > 0) {
-        heroTl.to(stickers, {
-          y: -170,
-          rotation: (i) => (i % 2 === 0 ? -15 : 15),
-          opacity: 0.6,
-          ease: 'none'
-        }, 0);
-      }
+
 
       // Layer 3: Floating Cards move subtly (hero-red-arch remains fixed)
       const cardsFlex = heroEl.querySelector('.hero-cards-flex');
@@ -94,18 +85,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroSection = document.getElementById('hero');
 
   if (heroVideo && heroSection) {
-    const revealStickers = () => {
+    const onVideoEnd = () => {
       heroSection.classList.add('video-ended');
       heroVideo.pause();
     };
 
-    heroVideo.addEventListener('ended', revealStickers);
-    heroVideo.addEventListener('error', revealStickers);
+    heroVideo.addEventListener('ended', onVideoEnd);
+    heroVideo.addEventListener('error', onVideoEnd);
 
-    // Fallback: reveal stickers after 12s if video stream doesn't trigger ended
+    // Fallback: trigger video-ended after 12s if video stream doesn't trigger ended
     setTimeout(() => {
       if (!heroSection.classList.contains('video-ended')) {
-        revealStickers();
+        onVideoEnd();
       }
     }, 12000);
   }
