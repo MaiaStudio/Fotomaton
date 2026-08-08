@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 16. METADATOS SEO -->
+  <title>Fotomatones en Madrid para Bodas</title>
+  <meta name="description"
+    content="Alquila un Fotomatón Clásico o Espejo para bodas, cumpleaños, comuniones y eventos de empresa en Madrid. Packs desde 249 €, fotos ilimitadas y asistencia incluida.">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Fotomatones en Madrid para Bodas">
+  <meta property="og:description"
+    content="Fotomatones para bodas en Madrid. La foto se imprime en segundos. El recuerdo dura años. Packs desde 249 €.">
+  <meta property="og:image" content="assets/imagens/hero_photobooth.png">
+  <meta property="og:type" content="website">
+
+  <!-- CSS & Fonts -->
+  <link rel="stylesheet" href="styles.css?v=1.3">
+  <link rel="stylesheet" href="sticker-peel.css">
+  <link rel="stylesheet" href="drift-wall.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.css">
+
+  <!-- Three.js Import Map for Ghost Cursor Effect -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Custom Cursor (Osmo Supply) -->
+  <div class="cursor"></div>
+
+  <!-- Fixed Bottom Blur Overlay -->
+  <div class="bottom-blur-overlay"></div>
+
+  <!-- 1. HEADER -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#hero" class="logo">
+        <div class="logo-icon">F</div>
+        <span class="logo-text">Fotomatón</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Inicio</a></li>
+          <li><a href="#experiencia" class="nav-link">Fotomatones</a></li>
+          <li><a href="#como-funciona" class="nav-link">Cómo funciona</a></li>
+          <li><a href="#packs" class="nav-link">Packs</a></li>
+          <li><a href="#eventos" class="nav-link">Eventos</a></li>
+          <li><a href="#faq" class="nav-link">Preguntas frecuentes</a></li>
+        </ul>
+      </nav>
+
+      <a href="#formulario" class="btn btn-red">
+        Contacto <span class="btn-arrow">↗</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION (Curved Bottom Arch + Central Red Arch matching ilustração.png) -->
+  <section id="hero" class="hero-wrapper" style="position: relative; overflow: visible;">
+    <!-- Desktop Background Video -->
+    <video id="hero-bg-video" class="hero-bg-video" muted playsinline autoplay>
+      <source src="assets/video hero.mp4" type="video/mp4">
+    </video>
+
+    <!-- Sticker Left -->
+    <div id="hero-sticker-left" class="hero-sticker-anchor"
+      style="position: absolute; left: 40px; top: 50%; transform: translateY(-50%); z-index: 20;"></div>
+    <!-- Sticker Right -->
+    <div id="hero-sticker-right" class="hero-sticker-anchor"
+      style="position: absolute; right: 40px; top: 50%; transform: translateY(-50%); z-index: 20;"></div>
+
+    <div class="container">
+
+
+      <h1 class="hero-title">
+        La foto se imprime en segundos.<br>
+        <span class="text-red">El recuerdo dura años.</span>
+      </h1>
+
+      <p class="hero-description">
+        Haz que tus invitados se conozcan, se diviertan y se lleven un recuerdo personalizado de tu celebración.<br>
+        Elige entre la rapidez del <strong>Fotomatón Clásico</strong> o la experiencia interactiva del <strong>Fotomatón
+          Espejo</strong>. Nosotros nos encargamos del montaje, la personalización, las fotografías y la asistencia
+      </p>
+
+      <!-- Giant Red Stage & Arch from ilustração.png -->
+      <div class="hero-red-stage">
+        <div class="hero-red-arch"></div>
+        <div class="hero-cards-flex">
+          <div class="hero-float-card">
+            <h4>249 €</h4>
+            <p>Packs desde · Servicio en Madrid y alrededores · Consulta sin compromiso</p>
+          </div>
+
+          <div class="hero-center-cta-box">
+            <a href="#formulario" class="btn btn-glass-hero">
+              Consultar disponibilidad <span class="btn-arrow">↗</span>
+            </a>
+          </div>
+
+          <div class="hero-float-card">
+            <div style="color: var(--red-primary); margin-bottom: 6px;">★★★★★</div>
+            <p style="font-weight: 700; color: #000; font-size: 0.9rem;">"Fotos impresas al instante y álbum de firmas
+              inolvidable."</p>
+            <span style="font-size: 0.75rem; color: #777;">Reseñas Verificadas Google</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FRANJA DE CONFIANZA & ELIGE TU EXPERIENCIA (DARK SECTION matching ilustração.png) -->
+  <section id="experiencia" class="section-dark section-dark-rounded">
+    <div class="container">
+      <div class="section-header">
+
+        <h2>Dos formas de disfrutar.<br>Una misma misión: llenar tu evento de recuerdos.</h2>
+        <p>No todos los eventos necesitan el mismo fotomatón. Elige la experiencia que mejor encaje con el espacio, el
+          estilo de la celebración y el número de invitados.</p>
+      </div>
+
+      <!-- 1. Booth Cards Clásico vs Espejo -->
+      <div class="booth-grid" style="margin-top: 40px;">
+        <!-- Fotomatón Clásico -->
+        <div class="booth-card">
+          <div class="booth-card-media">
+            <img src="assets/imagens/clásico.png" alt="Fotomatón Clásico">
+          </div>
+          <h3>Fotomatón Clásico</h3>
+
+          <div class="booth-tags">
+            <span class="tag">Bodas</span>
+            <span class="tag">Cumpleaños</span>
+            <span class="tag">Comuniones</span>
+            <span class="tag">Empresa</span>
+          </div>
+
+          <ul class="feature-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg> Mayor ritmo de fotografías</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg> Perfecto para grupos grandes</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg> Fotografías impresas al instante</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg> La opción más económica</li>
+          </ul>
+
+          <button class="btn btn-red" onclick="switchToModel('clasico')">
+            Ver packs del Clásico <span class="btn-arrow">↗</span>
+          </button>
+        </div>
+
+        <!-- Fotomatón Espejo -->
+        <div class="booth-card">
+          <div class="booth-card-media">
+            <img src="assets/imagens/espejo.png" alt="Fotomatón Espejo Magic Mirror">
+          </div>
+          <h3>Fotomatón Espejo</h3>
+
+          <div class="booth-tags">
+            <span class="tag">Bodas elegantes</span>
+            <span class="tag">Galas</span>
+            <span class="tag">Eventos corporativos</span>
+            <span class="tag">Premium</span>
+          </div>
+
+          <ul class="feature-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg> Gran impacto visual</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg> Pantalla táctil interactiva</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg> Fotografías de cuerpo entero</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12" />
+              </svg> Puesta en escena más elegante</li>
+          </ul>
+
+          <button class="btn btn-red" onclick="switchToModel('espejo')">
+            Ver packs del Espejo <span class="btn-arrow">↗</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Help Decision Helper (¿Todavía tienes dudas?) -->
+      <div
+        style="background: var(--bg-dark-card); border: 1px solid var(--border-dark); border-radius: var(--radius-lg); padding: 40px; margin-top: 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+        <div>
+          <h3 style="font-size: 1.4rem; color: #FFF; margin-bottom: 8px;">¿Todavía tienes dudas?</h3>
+          <p style="color: var(--text-light-muted); font-size: 0.9rem;">
+            <strong>Elige el Fotomatón Clásico</strong> si buscas rapidez y fotos de grupo.<br>
+            <strong>Elige el Fotomatón Espejo</strong> si buscas impacto visual e interacción premium.
+          </p>
+        </div>
+        <button id="open-help-modal" class="btn btn-outline-light">
+          Ayudadme a elegir <span class="btn-arrow">↗</span>
+        </button>
+      </div>
+
+      <!-- 3. Stat Pill Bar (Divider in Center) -->
+      <div class="stat-pill-bar" style="margin-top: 48px; margin-bottom: 48px;">
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Fotos Ilimitadas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">249€</div>
+          <div class="stat-label">Packs Desde</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5★</div>
+          <div class="stat-label">Calificación Google</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">Madrid</div>
+          <div class="stat-label">Y Alrededores</div>
+        </div>
+      </div>
+
+      <!-- 4. 3 Key Benefits Cards (Final Block) -->
+      <div class="dark-feature-cards">
+        <div class="dark-card">
+          <div class="feature-card-img-wrap">
+            <img src="assets/imagens/infinito.png" alt="Fotos ilimitadas" class="feature-card-img">
+          </div>
+          <h3>Fotos ilimitadas</h3>
+          <p>Tus invitados pueden repetir todas las veces que quieran durante el horario contratado.</p>
+        </div>
+
+        <div class="dark-card">
+          <div class="feature-card-img-wrap">
+            <img src="assets/imagens/custom.webp" alt="Diseño personalizado" class="feature-card-img">
+          </div>
+          <h3>Diseño personalizado</h3>
+          <p>Adaptamos las fotografías con nombres, fecha, colores, frases o identidad de marca.</p>
+        </div>
+
+        <div class="dark-card">
+          <div class="feature-card-img-wrap">
+            <img src="assets/imagens/suporte.png" alt="Asistencia durante el evento" class="feature-card-img">
+          </div>
+          <h3>Asistencia durante el evento</h3>
+          <p>Nuestro equipo supervisa el funcionamiento y ayuda a tus invitados durante la experiencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CÓMO FUNCIONA (VERTICAL NUMBERED TIMELINE matching Section 3 of ilustração.png) -->
+  <section id="como-funciona" class="section-light">
+    <div class="container timeline-section-grid">
+      <div class="timeline-sticky-left">
+
+        <h2>Reservar tu fotomatón es así de fácil</h2>
+        <p style="margin-bottom: 32px;">Preparamos cada parte de la experiencia para que tú solo tengas que disfrutar
+          durante la celebración.</p>
+
+        <a href="#formulario" class="btn btn-red">
+          Comprobar disponibilidad <span class="btn-arrow">↗</span>
+        </a>
+      </div>
+
+      <div class="timeline-vertical-list">
+        <div class="timeline-step-item">
+          <div class="step-circle">1</div>
+          <div class="step-content">
+            <h3>1. Cuéntanos sobre tu evento</h3>
+            <p>Indícanos la fecha, la localidad, el tipo de celebración y el horario aproximado.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step-item">
+          <div class="step-circle">2</div>
+          <div class="step-content">
+            <h3>2. Elige tu fotomatón</h3>
+            <p>Selecciona el Clásico o el Espejo. Si tienes dudas, te ayudamos a escoger el modelo más adecuado.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step-item">
+          <div class="step-circle">3</div>
+          <div class="step-content">
+            <h3>3. Personalizamos las fotos</h3>
+            <p>Preparamos el diseño con vuestros nombres, fecha, colores, temática o identidad visual.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step-item">
+          <div class="step-circle">4</div>
+          <div class="step-content">
+            <h3>4. Montamos todo</h3>
+            <p>Llegamos con antelación, instalamos el equipo y comprobamos que todo esté preparado.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step-item">
+          <div class="step-circle">5</div>
+          <div class="step-content">
+            <h3>5. Empieza la diversión</h3>
+            <p>Tus invitados posan, imprimen sus fotografías y repiten todas las veces que quieran.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step-item">
+          <div class="step-circle">6</div>
+          <div class="step-content">
+            <h3>6. Conservas todos los recuerdos</h3>
+            <p>Además de las fotografías impresas, recibirás las imágenes digitales según las condiciones del pack.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- 6. PACKS Y PRECIOS -->
+  <section id="packs" class="section-light">
+    <div class="container">
+      <div class="section-header">
+
+        <h2>Un pack para cada tipo de celebración</h2>
+        <p>Todos los packs están pensados para ofrecer una experiencia completa. Solo tienes que elegir el fotomatón y
+          el tiempo que mejor encajen con tu evento.</p>
+      </div>
+
+      <!-- Selector Superior -->
+      <div class="packs-toggle-container">
+        <div class="packs-toggle">
+          <button id="toggle-clasico" class="toggle-btn active">Fotomatón Clásico</button>
+          <button id="toggle-espejo" class="toggle-btn">Fotomatón Espejo</button>
+        </div>
+      </div>
+
+      <!-- Banner Dynamic -->
+      <div class="packs-banner">
+        <h4 id="packs-banner-title">Más ritmo, más grupos y el mejor precio</h4>
+        <div id="packs-banner-tags"
+          style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px;"></div>
+      </div>
+
+      <!-- Dynamic Packs Grid Carousel -->
+      <div class="packs-carousel-wrapper">
+        <button id="packs-arrow-left" class="packs-arrow packs-arrow-left" aria-label="Anterior">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <button id="packs-arrow-right" class="packs-arrow packs-arrow-right" aria-label="Siguiente">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+        <div id="packs-grid" class="packs-grid"></div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- 7. EVENTOS (Full-width Dark Section with Oversized ScrollVelocity Header) -->
+  <section id="eventos" class="section-dark section-eventos-full">
+    <!-- Oversized ScrollVelocity Header -->
+    <div class="scroll-velocity-container">
+      <div class="parallax">
+        <div class="scroller scroller-row-1">
+          <span>Hay momentos que merecen &nbsp;•&nbsp;&nbsp;</span>
+          <span>Hay momentos que merecen &nbsp;•&nbsp;&nbsp;</span>
+          <span>Hay momentos que merecen &nbsp;•&nbsp;&nbsp;</span>
+          <span>Hay momentos que merecen &nbsp;•&nbsp;&nbsp;</span>
+          <span>Hay momentos que merecen &nbsp;•&nbsp;&nbsp;</span>
+          <span>Hay momentos que merecen &nbsp;•&nbsp;&nbsp;</span>
+        </div>
+      </div>
+      <div class="parallax">
+        <div class="scroller scroller-row-2">
+          <span>algo más que una fotografía &nbsp;•&nbsp;&nbsp;</span>
+          <span>algo más que una fotografía &nbsp;•&nbsp;&nbsp;</span>
+          <span>algo más que una fotografía &nbsp;•&nbsp;&nbsp;</span>
+          <span>algo más que una fotografía &nbsp;•&nbsp;&nbsp;</span>
+          <span>algo más que una fotografía &nbsp;•&nbsp;&nbsp;</span>
+          <span>algo más que una fotografía &nbsp;•&nbsp;&nbsp;</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DriftWall Gallery -->
+    <div id="drift-wall-container"></div>
+  </section>
+
+  <!-- 8. OPINIONES (TESTIMONIAL SECTION matching Section 4 of ilustração.png) -->
+  <section class="section-light">
+    <div class="container">
+      <div class="section-header">
+
+        <h2>Quienes ya lo han celebrado lo explican mejor</h2>
+      </div>
+
+      <div class="testimonial-box">
+        <div class="testimonial-info">
+          <div class="testimonial-quote-mark">“</div>
+          <p class="testimonial-text">"Contratamos el Fotomatón Espejo para nuestra boda y fue un éxito absoluto. Todos
+            los invitados estaban maravillados con las fotos y la alfombra roja. El álbum de firmas nos quedó de
+            recuerdo para toda la vida. ¡Los chicos fueron súper atentos!"</p>
+          <div class="testimonial-author">Laura & Carlos</div>
+          <div class="testimonial-event">Boda en Finca El Jarama, Madrid · Reseña Verificada Google ★★★★★</div>
+        </div>
+
+        <div class="testimonial-avatar-shape">
+          <img src="assets/imagens/boda_photobooth.png" alt="Testimonio Fotomatón Party Madrid">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. CTA FINAL (GIANT RED CURVED BANNER matching ilustração.png) -->
+  <section class="container">
+    <div class="cta-red-banner">
+
+      <h2>Tu fecha solo ocurre una vez.<br>Comprueba ahora si tenemos un fotomatón disponible.</h2>
+      <p>Cuéntanos cuándo y dónde se celebrará tu evento. Te recomendaremos el modelo y el pack que mejor encajen con tu
+        celebración.</p>
+
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <a href="#formulario" class="btn btn-white-pill">
+          Consultar disponibilidad <span class="btn-arrow">↗</span>
+        </a>
+        <a href="https://wa.me/34672546955" target="_blank" class="btn btn-outline-light">
+          Escribir por WhatsApp <span class="btn-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FORMULARIO & FAQ (Dark card box matching Fotomatones section) -->
+  <section id="faq" class="section-dark section-dark-rounded">
+    <div class="container">
+      <div class="section-header">
+
+        <h2>Todo lo que necesitas saber antes de reservar</h2>
+      </div>
+
+      <div class="faq-accordion" style="margin-bottom: 80px;">
+        <div class="faq-item">
+          <button class="faq-button">
+            <span>¿Con cuánto tiempo de antelación debemos reservar?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Recomendamos consultar la fecha cuanto antes, especialmente para bodas, comuniones y eventos de fin de
+              semana.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-button">
+            <span>¿Las fotografías son ilimitadas?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Sí. Durante el horario contratado, los invitados pueden repetir todas las veces que quieran.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-button">
+            <span>¿Podemos personalizar las fotografías?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Sí. Podemos incorporar nombres, fecha, colores, frases, ilustraciones o el logotipo de tu empresa.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-button">
+            <span>¿El álbum de firmas está incluido?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Los packs incluyen álbum de firmas para pegar una copia y escribir una dedicatoria.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-button">
+            <span>¿Hay una persona atendiendo el fotomatón?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+          <div class="faq-content">
+            <p>Sí. Los packs incluyen asistencia durante todo el servicio.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Box -->
+      <div id="formulario" class="form-box">
+
+        <h3 style="margin-bottom: 24px; font-size: 1.8rem; text-align: center; font-weight: 900;">Reserva tu fotomatón
+        </h3>
+
+        <form id="booking-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="form-name">Nombre</label>
+              <input type="text" id="form-name" class="form-control" placeholder="¿Cómo podemos dirigirnos a ti?"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-phone">Teléfono</label>
+              <input type="tel" id="form-phone" class="form-control" placeholder="Para responderte rápidamente"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-email">Correo electrónico</label>
+              <input type="email" id="form-email" class="form-control" placeholder="Te enviaremos aquí la propuesta"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-date">Fecha del evento</label>
+              <input type="date" id="form-date" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-location">Localidad</label>
+              <input type="text" id="form-location" class="form-control" placeholder="¿Dónde se celebrará?" required>
+            </div>
+
+            <div class="form-group">
+              <label for="form-event">Tipo de evento</label>
+              <select id="form-event" class="form-control" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Boda">Boda</option>
+                <option value="Cumpleaños">Cumpleaños</option>
+                <option value="Comunión o bautizo">Comunión o bautizo</option>
+                <option value="Evento de empresa">Evento de empresa</option>
+                <option value="Graduación">Graduación</option>
+                <option value="Fiesta privada">Fiesta privada</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="form-booth">Fotomatón que te interesa</label>
+              <select id="form-booth" class="form-control" required>
+                <option value="" disabled selected>Selecciona un modelo</option>
+                <option value="Fotomatón Clásico">Fotomatón Clásico</option>
+                <option value="Fotomatón Espejo">Fotomatón Espejo</option>
+                <option value="Necesito asesoramiento">Necesito asesoramiento</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="form-pack">Pack que te interesa</label>
+              <select id="form-pack" class="form-control" required>
+                <option value="" disabled selected>Selecciona un pack</option>
+                <option value="Esencial">Esencial</option>
+                <option value="Fiesta">Fiesta</option>
+                <option value="Completo">Completo</option>
+                <option value="Todavía no lo sé">Todavía no lo sé</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="form-message">Mensaje</label>
+              <textarea id="form-message" class="form-control" rows="4"
+                placeholder="Cuéntanos el horario aproximado, número de invitados e ideas..."></textarea>
+            </div>
+
+            <div class="form-group full-width" style="flex-direction: row; align-items: center; gap: 10px;">
+              <input type="checkbox" id="form-privacy" required>
+              <label for="form-privacy" style="font-weight: 400; font-size: 0.85rem;">He leído y acepto la política de
+                privacidad.</label>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 32px;">
+            <button type="submit" class="btn btn-red" style="width: 100%; max-width: 360px;">
+              Comprobar disponibilidad <span class="btn-arrow">↗</span>
+            </button>
+          </div>
+        </form>
+
+        <div id="form-success" class="form-success-message">
+          <h3>¡Gracias! Ya tenemos los datos de tu evento.</h3>
+          <p style="margin-bottom: 20px;">Revisaremos la disponibilidad y contactaremos contigo a través de los datos
+            indicados.<br>¿Necesitas añadir algún detalle?</p>
+          <a id="whatsapp-success-btn" href="https://wa.me/34672546955" target="_blank" class="btn btn-whatsapp">
+            Escribir por WhatsApp <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. FLOATING WHATSAPP BUTTON -->
+  <a id="whatsapp-float" href="https://wa.me/34672546955" target="_blank" class="whatsapp-float"
+    aria-label="Contactar por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.705 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+    </svg>
+  </a>
+
+  <!-- Mobile Bottom Bar -->
+  <div class="mobile-bottom-bar">
+    <a href="#formulario" class="btn btn-red" style="width: 100%;">
+      Consultar mi fecha <span class="btn-arrow">↗</span>
+    </a>
+  </div>
+
+  <!-- 12. FOOTER WITH OVERSIZED BRAND DISPLAY LOGO matching ilustração.png -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="logo">
+            <div class="logo-icon">F</div>
+            <span class="logo-text" style="color: #FFF;">Fotomatón Party Madrid</span>
+          </a>
+          <p>Fotomatón Clásico y Fotomatón Espejo para bodas, cumpleaños, comuniones y eventos de empresa en Madrid y
+            alrededores.</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navegación</h4>
+          <ul class="footer-links">
+            <li><a href="#experiencia">Fotomatones</a></li>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#packs">Packs</a></li>
+            <li><a href="#eventos">Eventos</a></li>
+            <li><a href="#faq">Preguntas frecuentes</a></li>
+            <li><a href="#formulario">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contacto</h4>
+          <ul class="footer-links">
+            <li>Teléfono: <a href="tel:672546955">672 546 955</a></li>
+            <li>Correo: <a href="mailto:info@fotomatonpartymadrid.es">info@fotomatonpartymadrid.es</a></li>
+            <li>Ubicación: Las Rozas, Madrid</li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#">Aviso legal</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Política de cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Giant Oversized Brand Logo matching Coursea logo at bottom of ilustração.png with GlitchText Effect -->
+      <div class="footer-giant-logo glitch enable-on-hover" data-text="Fotomatón Party"
+        style="--after-duration: 3s; --before-duration: 2s; --after-shadow: -5px 0 #FF2A38; --before-shadow: 5px 0 #00FFFF;">
+        Fotomatón Party</div>
+    </div>
+  </footer>
+
+  <!-- Modal Help Guide -->
+  <div id="help-modal" class="modal-overlay">
+    <div class="modal-box">
+      <button id="close-help-modal" class="modal-close">&times;</button>
+
+      <h3 style="margin-bottom: 12px; font-size: 1.5rem; font-weight: 900;">¿Qué experiencia buscas para tu evento?</h3>
+      <p style="margin-bottom: 24px; color: var(--text-dark-muted);">Responde a este rápido criterio para recomendarte
+        el modelo perfecto:</p>
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <button onclick="chooseWizard('clasico')" class="btn btn-outline-dark"
+          style="justify-content: flex-start; text-align: left; padding: 20px; border-radius: 16px;">
+          <div>
+            <strong style="color: var(--red-primary); display: block; font-size: 1.05rem;">Opción A: Rapidez y Grandes
+              Grupos</strong>
+            <span style="font-size: 0.85rem; color: #555;">Busco maximizar el número de fotos y fotos en grupo rápido.
+              (Fotomatón Clásico)</span>
+          </div>
+        </button>
+
+        <button onclick="chooseWizard('espejo')" class="btn btn-outline-dark"
+          style="justify-content: flex-start; text-align: left; padding: 20px; border-radius: 16px;">
+          <div>
+            <strong style="color: var(--red-primary); display: block; font-size: 1.05rem;">Opción B: Impacto Visual y
+              Puesta en Escena Premium</strong>
+            <span style="font-size: 0.85rem; color: #555;">Busco un espejo interactivo de cuerpo entero y alfombra roja.
+              (Fotomatón Espejo)</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+
+  <!-- Initialize Ghost Cursor & MoltenMetal Background Effects -->
+  <script type="module">
+    import { createGhostCursor } from './ghost-cursor.js';
+    import { createMoltenMetal } from './molten-metal.js';
+    import { createStickerPeel } from './sticker-peel.js';
+    import { createDriftWall } from './drift-wall.js';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 00. DriftWall (React Bits Component) in Section Eventos
+      const wallContainer = document.getElementById('drift-wall-container');
+      if (wallContainer) {
+        const eventosItems = [
+          { image: 'assets/eventos/Fotomaton1-qegx4fdab8h4t8woyx7nobt45tx1cm1fepsqcpnyi8.webp', title: 'Fotomatón Party' },
+          { image: 'assets/eventos/amigos-tiro-medio-posando-juntos-fotomaton_23-2150171692.avif', title: 'Amigos Posando' },
+          { image: 'assets/eventos/ee92a7b79bb9d80ffb9305eb6d0a4760.jpg', title: 'Celebración' },
+          { image: 'assets/eventos/images (1).jpg', title: 'Momentos Especiales' },
+          { image: 'assets/eventos/images (2).jpg', title: 'Diversión' },
+          { image: 'assets/eventos/images (3).jpg', title: 'Recuerdos' },
+          { image: 'assets/eventos/images (4).jpg', title: 'Fiesta' },
+          { image: 'assets/eventos/images (5).jpg', title: 'Fotomatón Espejo' },
+          { image: 'assets/eventos/images (6).jpg', title: 'Fotomatón Clásico' },
+          { image: 'assets/eventos/images.jpg', title: 'Boda Madrid' },
+          { image: 'assets/imagens/boda_photobooth.png', title: 'Boda Elegante' },
+          { image: 'assets/imagens/clásico.png', title: 'Modelo Clásico' },
+          { image: 'assets/imagens/espejo.png', title: 'Modelo Espejo' }
+        ];
+
+        createDriftWall(wallContainer, {
+          items: eventosItems,
+          columns: 7,
+          tileWidth: 232,
+          tileHeight: 136,
+          gap: 10,
+          tilt: 12,
+          turn: -14,
+          perspective: 1500,
+          depth: 120,
+          speed: 42,
+          direction: "up",
+          variance: 0.5,
+          parallax: 0.6,
+          fade: 0.4,
+          dim: 1,
+          overlayColor: "#000000",
+          radius: 5,
+          roll: 2
+        });
+      }
+      // 0. Stickers in Hero Section (placed left + right)
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const placeStickers = () => {
+          // Remove existing sticker wrappers if re-placing
+          heroSection.querySelectorAll('.sticker-peel-wrapper').forEach(el => el.remove());
+
+          const w = heroSection.offsetWidth;
+          const h = heroSection.offsetHeight;
+          const isMobile = w <= 768;
+          const stickerW = isMobile ? 85 : 180;
+
+          // Calculate Y coordinate below paragraph text on mobile using getBoundingClientRect
+          const descEl = heroSection.querySelector('.hero-description');
+          let descBottom = Math.floor(h * 0.42);
+          if (descEl) {
+            const rect = descEl.getBoundingClientRect();
+            const heroRect = heroSection.getBoundingClientRect();
+            descBottom = Math.round(rect.bottom - heroRect.top + 10);
+          }
+
+          const leftX = isMobile ? Math.floor(w / 2) - stickerW - 8 : 30;
+          const rightX = isMobile ? Math.floor(w / 2) + 8 : w - 210;
+          const leftY = isMobile ? descBottom : Math.floor(h / 2) - 120;
+          const rightY = isMobile ? descBottom : Math.floor(h / 2) - 100;
+
+          // Left sticker (Bigode)
+          createStickerPeel(heroSection, {
+            imageSrc: 'assets/stickers/bigode.png',
+            width: stickerW,
+            peelBackHoverPct: 22,
+            peelBackActivePct: 42,
+            initialX: leftX,
+            initialY: leftY,
+            rotate: -10
+          });
+
+          // Right sticker (Óculos)
+          createStickerPeel(heroSection, {
+            imageSrc: 'assets/stickers/oculos.png',
+            width: stickerW,
+            peelBackHoverPct: 22,
+            peelBackActivePct: 42,
+            initialX: rightX,
+            initialY: rightY,
+            rotate: 12
+          });
+        };
+
+        // Run placeStickers immediately and after load/resize
+        placeStickers();
+        window.addEventListener('load', placeStickers);
+        window.addEventListener('resize', placeStickers);
+      }
+
+      // 1. Ghost Cursor on Dark Rounded Sections
+      const darkSectionIds = ['experiencia', 'eventos', 'faq'];
+      darkSectionIds.forEach(id => {
+        const target = document.getElementById(id);
+        if (target) {
+          createGhostCursor(target, {
+            color: '#FF2A38',
+            brightness: 1.2,
+            edgeIntensity: 0,
+            trailLength: 50,
+            inertia: 0.5,
+            grainIntensity: 0.05,
+            bloomStrength: 0.12,
+            bloomRadius: 1.0,
+            bloomThreshold: 0.025,
+            mixBlendMode: 'screen',
+            zIndex: 0
+          });
+        }
+      });
+
+      // 2. MoltenMetal Background Effect on Footer (z-index 0: behind all footer content)
+      const footerElement = document.querySelector('footer.footer');
+      if (footerElement) {
+        createMoltenMetal(footerElement, {
+          color1: '#000000',
+          color2: '#ff2937',
+          color3: '#FFFFFF',
+          speed: 0.35,
+          scale: 4,
+          detail: 3,
+          glow: 1.6,
+          coreSize: 0.1,
+          swirl: 1,
+          fold: -0.2,
+          blackPoint: 0.05,
+          brightness: 1.3,
+          colorMode: 'molten',
+          grain: true,
+          grainIntensity: 0.05,
+          mouseInteraction: true,
+          mouseStrength: 0.3,
+          opacity: 1.0,
+          zIndex: 0
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
