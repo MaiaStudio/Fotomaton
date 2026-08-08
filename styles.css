@@ -1884,9 +1884,13 @@ select.form-control {
 }
 
 @media (max-width: 768px) {
+  /* Mobile Packs Carousel & Card Optimization */
   .packs-carousel-wrapper {
     position: relative;
     padding: 0;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    width: calc(100% + 40px) !important;
   }
 
   .packs-arrow {
@@ -1897,8 +1901,8 @@ select.form-control {
     top: 50% !important;
     transform: translateY(-50%) !important;
     z-index: 35 !important;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     padding: 0 !important;
     margin: 0 !important;
     border-radius: 50%;
@@ -1906,15 +1910,15 @@ select.form-control {
     color: var(--red-primary, #ff2937);
     border: 1px solid rgba(0, 0, 0, 0.12);
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
     transition: opacity 0.25s ease, transform 0.2s ease, background-color 0.2s ease;
     user-select: none;
   }
 
   .packs-arrow svg {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     margin: 0 auto;
     stroke: var(--red-primary, #ff2937);
   }
@@ -1930,11 +1934,11 @@ select.form-control {
   }
 
   .packs-arrow-left {
-    left: 8px !important;
+    left: 4px !important;
   }
 
   .packs-arrow-right {
-    right: 8px !important;
+    right: 4px !important;
   }
 
   /* Doubts Helper Card Mobile Re-alignment */
@@ -1979,8 +1983,8 @@ select.form-control {
     -webkit-overflow-scrolling: touch !important;
     touch-action: pan-x pan-y !important;
     scroll-behavior: smooth !important;
-    padding: 16px 20px 24px 20px !important;
-    gap: 16px !important;
+    padding: 16px 16px 24px 16px !important;
+    gap: 12px !important;
     margin-bottom: 20px !important;
     scrollbar-width: none;
   }
@@ -1989,18 +1993,54 @@ select.form-control {
     display: none;
   }
 
+  /* Card Width & Compact Height Optimization */
   .pack-card {
-    flex: 0 0 calc(100% - 32px) !important;
-    width: calc(100% - 32px) !important;
-    max-width: 100% !important;
+    flex: 0 0 calc(100vw - 32px) !important;
+    width: calc(100vw - 32px) !important;
+    max-width: 400px !important;
     scroll-snap-align: center !important;
     scroll-snap-stop: always !important;
     margin: 0 !important;
+    padding: 24px 20px 20px 20px !important;
+  }
+
+  .pack-card h3.pack-name {
+    font-size: 1.35rem !important;
+  }
+
+  .pack-price {
+    font-size: 2.2rem !important;
+    margin: 4px 0 8px 0 !important;
+  }
+
+  .pack-price span {
+    font-size: 0.85rem !important;
   }
 
   /* Hide description under price on mobile to free up vertical space */
   .pack-desc {
     display: none !important;
+  }
+
+  .pack-card .feature-list {
+    margin-bottom: 16px !important;
+    gap: 8px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .pack-card .feature-list li {
+    font-size: 0.88rem !important;
+    padding: 2px 0 !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  .pack-cta-btn {
+    padding: 12px 20px !important;
+    font-size: 0.95rem !important;
   }
 
   .timeline-sticky-left,
