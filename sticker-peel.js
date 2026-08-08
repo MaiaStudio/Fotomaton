@@ -41,6 +41,8 @@ export function createStickerPeel(parent, {
   const mainImg = document.createElement('img');
   mainImg.src = imageSrc;
   mainImg.alt = '';
+  mainImg.width = width;
+  mainImg.height = width;
   mainImg.draggable = false;
   mainImg.addEventListener('contextmenu', e => e.preventDefault());
   main.appendChild(mainImg);
@@ -51,6 +53,8 @@ export function createStickerPeel(parent, {
   const flapImg = document.createElement('img');
   flapImg.src = imageSrc;
   flapImg.alt = '';
+  flapImg.width = width;
+  flapImg.height = width;
   flapImg.draggable = false;
   flapImg.addEventListener('contextmenu', e => e.preventDefault());
   flap.appendChild(flapImg);
