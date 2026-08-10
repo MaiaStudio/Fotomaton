@@ -20,6 +20,9 @@
   <meta property="og:image" content="assets/imagens/hero_photobooth.webp">
   <meta property="og:type" content="website">
 
+  <!-- Preload Mobile Hero LCP Image for instant paint on mobile devices -->
+  <link rel="preload" as="image" href="assets/imagens/fotomaton_clasico_mobile.webp" type="image/webp" media="(max-width: 992px)" fetchpriority="high">
+
   <!-- Resource Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,7 +113,7 @@
       <!-- Giant Red Stage & Arch from ilustração.png -->
       <div class="hero-red-stage">
         <div class="hero-red-arch"></div>
-        <img src="assets/imagens/fotomaton_clasico_mobile.webp" alt="Fotomatón Clásico" class="hero-photobooth-img" loading="eager" width="220" height="340">
+        <img src="assets/imagens/fotomaton_clasico_mobile.webp" alt="Fotomatón Clásico" class="hero-photobooth-img" loading="eager" fetchpriority="high" width="220" height="340">
         <div class="hero-cards-flex">
           <div class="hero-float-card">
             <h4>249 €</h4>
@@ -149,7 +152,7 @@
         <!-- Fotomatón Clásico -->
         <div class="booth-card">
           <div class="booth-card-media">
-            <video src="assets/videos/video clásico.webm" autoplay loop muted playsinline poster="assets/imagens/clasico.webp" width="600" height="400"></video>
+            <video src="assets/videos/video clásico.webm" autoplay loop muted playsinline preload="none" poster="assets/imagens/clasico.webp" width="600" height="400"></video>
           </div>
           <h3>Fotomatón Clásico</h3>
 
@@ -183,7 +186,7 @@
         <!-- Fotomatón Espejo -->
         <div class="booth-card">
           <div class="booth-card-media">
-            <video src="assets/videos/video espejo.webm" autoplay loop muted playsinline poster="assets/imagens/espejo.webp" width="600" height="400"></video>
+            <video src="assets/videos/video espejo.webm" autoplay loop muted playsinline preload="none" poster="assets/imagens/espejo.webp" width="600" height="400"></video>
           </div>
           <h3>Fotomatón Espejo</h3>
 

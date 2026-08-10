@@ -4,8 +4,10 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // --- 00. LENIS SMOOTH SCROLL INTEGRATION ---
-  if (typeof Lenis !== 'undefined') {
+  const isDesktopDevice = window.innerWidth > 768 && !('ontouchstart' in window);
+
+  // --- 00. LENIS SMOOTH SCROLL INTEGRATION (Desktop only) ---
+  if (isDesktopDevice && typeof Lenis !== 'undefined') {
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -29,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- 01. HERO SECTION LAYERED PARALLAX (GSAP ScrollTrigger) ---
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  // --- 01. HERO SECTION LAYERED PARALLAX (Desktop only) ---
+  if (isDesktopDevice && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     const heroEl = document.getElementById('hero');
     if (heroEl) {
       const heroTl = gsap.timeline({
@@ -53,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 0);
       }
 
-
-
       // Layer 3: Floating Cards move subtly (hero-red-arch remains fixed)
       const cardsFlex = heroEl.querySelector('.hero-cards-flex');
       if (cardsFlex) {
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- Osmo Supply: Basic Custom Cursor ---
-  if (typeof gsap !== 'undefined' && document.querySelector('.cursor')) {
+  // --- Osmo Supply: Basic Custom Cursor (Desktop only) ---
+  if (isDesktopDevice && typeof gsap !== 'undefined' && document.querySelector('.cursor')) {
     gsap.set('.cursor', { xPercent: -50, yPercent: -50 });
 
     let xTo = gsap.quickTo('.cursor', 'x', { duration: 0.6, ease: 'power3' });
