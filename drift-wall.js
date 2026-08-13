@@ -97,6 +97,8 @@ export function createDriftWall(container, options = {}) {
         const img = document.createElement('img');
         img.src = item.image;
         img.alt = item.title || '';
+        img.width = tileWidth;
+        img.height = tileHeight;
         img.loading = 'lazy';
         img.decoding = 'async';
         img.draggable = false;
@@ -155,10 +157,39 @@ export function createDriftWall(container, options = {}) {
       if (el) el.style.transform = `translate3d(0, ${-next}px, 0)`;
     }
 
-    rafId = requestAnimationFrame(animate);
+    if (isIntersecting) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      rafId = null;
+    }
   }
 
-  rafId = requestAnimationFrame(animate);
+  let isIntersecting = false;
+  const observer = typeof IntersectionObserver !== 'undefined'
+    ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          isIntersecting = entry.isIntersecting;
+          if (isIntersecting) {
+            if (!rafId) {
+              lastTs = null;
+              rafId = requestAnimationFrame(animate);
+            }
+          } else {
+            if (rafId) {
+              cancelAnimationFrame(rafId);
+              rafId = null;
+            }
+          }
+        });
+      }, { threshold: 0.01 })
+    : null;
+
+  if (observer) {
+    observer.observe(container);
+  } else {
+    isIntersecting = true;
+    rafId = requestAnimationFrame(animate);
+  }
 
   // --- Parallax pointer tracking only ---
   function handlePointerMove(e) {
@@ -180,6 +211,7 @@ export function createDriftWall(container, options = {}) {
   return {
     destroy() {
       if (rafId) cancelAnimationFrame(rafId);
+      if (observer) observer.disconnect();
       container.removeEventListener('pointermove', handlePointerMove);
       container.removeEventListener('pointerleave', handlePointerLeave);
       container.innerHTML = '';

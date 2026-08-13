@@ -27,8 +27,9 @@
   <!-- Preload Mobile Hero LCP Image for instant paint on mobile devices -->
   <link rel="preload" as="image" href="assets/imagens/fotomaton_clasico_mobile.webp" type="image/webp" media="(max-width: 992px)" fetchpriority="high">
 
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+  <!-- Google Fonts (Non-render-blocking async load) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"></noscript>
 
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="styles.min.css">
@@ -108,7 +109,7 @@
       <!-- Giant Red Stage & Arch from ilustração.png -->
       <div class="hero-red-stage">
         <div class="hero-red-arch"></div>
-        <img src="assets/imagens/fotomaton_clasico_mobile.webp" alt="Fotomatón Clásico" class="hero-photobooth-img" loading="eager" fetchpriority="high" width="220" height="340">
+        <img src="assets/imagens/fotomaton_clasico_mobile.webp" alt="Fotomatón Clásico" class="hero-photobooth-img" loading="eager" fetchpriority="high" width="440" height="1491">
         <div class="hero-cards-flex">
           <div class="hero-float-card">
             <h4>249 €</h4>
@@ -147,7 +148,7 @@
         <!-- Fotomatón Clásico -->
         <div class="booth-card">
           <div class="booth-card-media">
-            <video src="assets/videos/video clásico.webm" autoplay loop muted playsinline preload="none" poster="assets/imagens/clasico.webp" width="600" height="400"></video>
+            <video src="assets/videos/video clásico.webm" autoplay loop muted playsinline preload="none" poster="assets/imagens/clasico.webp" width="600" height="750"></video>
           </div>
           <h3>Fotomatón Clásico</h3>
 
@@ -181,7 +182,7 @@
         <!-- Fotomatón Espejo -->
         <div class="booth-card">
           <div class="booth-card-media">
-            <video src="assets/videos/video espejo.webm" autoplay loop muted playsinline preload="none" poster="assets/imagens/espejo.webp" width="600" height="400"></video>
+            <video src="assets/videos/video espejo.webm" autoplay loop muted playsinline preload="none" poster="assets/imagens/espejo.webp" width="600" height="450"></video>
           </div>
           <h3>Fotomatón Espejo</h3>
 
@@ -251,7 +252,7 @@
       <div class="dark-feature-cards">
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/infinito.webp" alt="Fotos ilimitadas" class="feature-card-img" width="500" height="400" loading="lazy" decoding="async">
+            <img src="assets/imagens/infinito.webp" alt="Fotos ilimitadas" class="feature-card-img" width="500" height="667" loading="lazy" decoding="async">
           </div>
           <h3>Fotos ilimitadas</h3>
           <p>Tus invitados pueden repetir todas las veces que quieran durante el horario contratado.</p>
@@ -259,7 +260,7 @@
 
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/custom.webp" alt="Diseño personalizado" class="feature-card-img" width="500" height="400" loading="lazy" decoding="async">
+            <img src="assets/imagens/custom.webp" alt="Diseño personalizado" class="feature-card-img" width="570" height="456" loading="lazy" decoding="async">
           </div>
           <h3>Diseño personalizado</h3>
           <p>Adaptamos las fotografías con nombres, fecha, colores, frases o identidad de marca.</p>
@@ -267,7 +268,7 @@
 
         <div class="dark-card">
           <div class="feature-card-img-wrap">
-            <img src="assets/imagens/suporte.webp" alt="Asistencia durante el evento" class="feature-card-img" width="500" height="400" loading="lazy" decoding="async">
+            <img src="assets/imagens/suporte.webp" alt="Asistencia durante el evento" class="feature-card-img" width="500" height="333" loading="lazy" decoding="async">
           </div>
           <h3>Asistencia durante el evento</h3>
           <p>Nuestro equipo supervisa el funcionamiento y ayuda a tus invitados durante la experiencia.</p>
@@ -437,7 +438,7 @@
         </div>
 
         <div class="testimonial-avatar-shape">
-          <img src="assets/imagens/boda_photobooth.webp" alt="Testimonio Fotomatón Party Madrid" width="600" height="400" loading="lazy" decoding="async">
+          <img src="assets/imagens/boda_photobooth.webp" alt="Testimonio Fotomatón Party Madrid" width="600" height="600" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -781,7 +782,7 @@
 
         createDriftWall(wallContainer, {
           items: eventosItems,
-          columns: 7,
+          columns: window.innerWidth <= 768 ? 3 : 7,
           tileWidth: 232,
           tileHeight: 136,
           gap: 10,
